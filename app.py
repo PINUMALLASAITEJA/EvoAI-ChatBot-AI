@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 from chatbot import get_chat_response
 from bson.objectid import ObjectId
+from urllib.parse import quote_plus  # <-- for safely encoding username/password
 
 # -------------------------------
 # Load environment variables
@@ -15,15 +16,19 @@ load_dotenv(dotenv_path="config/.env")
 # Initialize Flask app
 # -------------------------------
 app = Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY")
-
+app.secret_key = os.getenv("FLASK_SECRET_KEY", os.urandom(24))
 
 # -------------------------------
 # MongoDB setup
 # -------------------------------
-MONGO_URI = os.getenv("MONGO_URI")
+MONGO_USER = quote_plus(os.getenv("MONGO_USER"))
+MONGO_PASS = quote_plus(os.getenv("MONGO_PASS"))
+MONGO_HOST = os.getenv("MONGO_HOST")  # e.g., evoaicluster.76alleu.mongodb.net
+MONGO_DB = "EVO_AI_DB"
+
+MONGO_URI = f"mongodb+srv://{MONGO_USER}:{MONGO_PASS}@{MONGO_HOST}/?retryWrites=true&w=majority"
 client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
-db = client["EVO_AI_DB"]
+db = client[MONGO_DB]
 users = db["users"]
 chat_history = db["chat_history"]
 
