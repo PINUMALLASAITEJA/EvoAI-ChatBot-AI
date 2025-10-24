@@ -1,0 +1,39 @@
+# Required Packages
+pip install flask
+pip install flask-bcrypt
+pip install flask-session
+pip install pymongo
+pip install python-dotenv
+pip install torch
+pip install torch-directml
+pip install transformers
+pip install openai
+pip install google-search-results
+pip install requests
+
+# Required Development Tools
+Python 3.11+
+VS Code
+Command Prompt / Terminal
+
+# Backend Technologies
+Flask
+Flask-Session
+MongoDB
+python-dotenv
+
+# 🤖 AI/ML Tools
+transformers
+torch
+torch-directml
+
+# Integration Tools
+google_search_results
+openai
+GPT-Neo Model
+
+# Frontend Tools
+HTML
+CSS
+Bootstrap
+JavaScript
