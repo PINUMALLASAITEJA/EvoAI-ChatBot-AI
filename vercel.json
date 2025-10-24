@@ -5,7 +5,8 @@
   ],
   "env": {
     "OPENAI_API_KEY": "@openai_api_key",
-    "XAI_API_KEY": "@xai_api_key"
-  },
-  "pythonVersion": "3.10"
+    "GROK_API_KEY": "@grok_api_key",
+    "SERP_API_KEY": "@serp_api_key",
+    "MONGO_URI": "@mongo_uri"
+  }
 }
