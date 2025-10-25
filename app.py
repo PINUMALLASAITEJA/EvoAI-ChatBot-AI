@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 from werkzeug.security import generate_password_hash, check_password_hash
 from chatbot import get_chat_response
 from bson.objectid import ObjectId
-from urllib.parse import quote_plus  # <-- for safely encoding username/password
+from urllib.parse import quote_plus
+from flask_cors import CORS
 
 # -------------------------------
 # Load environment variables
@@ -16,6 +17,7 @@ load_dotenv(dotenv_path="config/.env")
 # Initialize Flask app
 # -------------------------------
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 app.secret_key = os.getenv("FLASK_SECRET_KEY", os.urandom(24))
 
 # -------------------------------
